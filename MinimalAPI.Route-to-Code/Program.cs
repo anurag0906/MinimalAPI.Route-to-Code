@@ -1,3 +1,4 @@
+using MinimalAPI.Route_to_Code;
 using MinimalAPI.Route_to_Code.Model;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -48,5 +49,23 @@ app.MapPut("/{somepara}", async (mycontext) =>
 });
 
 //DELETE
+
+
+//with DI---   https://localhost:7159/test/11
+app.MapGet("/test/{myid}", (string myid, IConfiguration config) => {
+
+	var data = config.GetValue<string>("MyKey");
+
+	var temp = "you entered- " + myid + ". Data from Config DI is- " + data;
+	return temp;
+});
+
+
+//Difficult to Test
+//Not good for Large complex operations
+
+//From Extn method-
+app.MinimapApiExtn();
+
 
 app.Run();

@@ -1,3 +1,4 @@
+using Carter;
 using MinimalAPI.Route_to_Code;
 using MinimalAPI.Route_to_Code.Model;
 
@@ -5,9 +6,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 //configure service
 builder.Services.AddScoped<MyModel>();
-
+builder.Services.AddCarter();
 
 var app = builder.Build();
+
+#region Local method Minimal API
 
 app.MapGet("/", () => "Hello World!");
 
@@ -63,9 +66,16 @@ app.MapGet("/test/{myid}", (string myid, IConfiguration config) => {
 
 //Difficult to Test
 //Not good for Large complex operations
+#endregion
 
+
+#region 2. As Extn method
 //From Extn method-
 app.MinimapApiExtn();
 
+
+#endregion
+
+app.MapCarter();
 
 app.Run();

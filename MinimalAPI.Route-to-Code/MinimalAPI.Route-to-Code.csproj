@@ -7,4 +7,8 @@
     <RootNamespace>MinimalAPI.Route_to_Code</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Carter" Version="6.0.0" />
+  </ItemGroup>
+
 </Project>
